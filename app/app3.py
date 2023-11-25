@@ -34,7 +34,7 @@ tabSource, tabFormat, tabGraph, tabChart, tabAnim = st.tabs(
     ["Source", "Format", "Graph", "Chart", "Animated"])
 
 with tabSource:
-    st.dataframe(df_orig)
+    st.dataframe(df_orig, use_container_width=True)
 
 # show in another data format
 with tabFormat:

@@ -14,7 +14,7 @@ tabSource, tabFormat, tabGraph, tabChart, tabAnim = st.tabs(
 with tabSource:
     filename = "data/employee-manager.csv"
     df = pd.read_csv(filename).convert_dtypes()
-    st.dataframe(df)
+    st.dataframe(df, use_container_width=True)
 
 # show in another data format
 with tabFormat:
