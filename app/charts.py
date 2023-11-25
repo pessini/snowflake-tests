@@ -34,7 +34,7 @@ def makeSunburst(labels, parents):
         parents=parents,
         insidetextorientation='horizontal')
     fig = go.Figure(data)
-    fig.write_html(f'static/charts/sunburst.html')
+    fig.write_html(f'app/static/charts/sunburst.html')
     return fig
 
 # see https://plotly.com/python/sankey-diagram/
