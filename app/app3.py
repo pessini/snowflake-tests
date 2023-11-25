@@ -40,18 +40,21 @@ with tabSource:
 with tabFormat:
     sel = st.selectbox(
         "Select a data format:",
-        options=["JSON", "XML", "YAML"])
+        options=["JSON", "XML", "YAML", "JSON Path"])
 
     root = formats.getJson(df)
     if sel == "JSON":
-        jsn = json.dumps(root, indent=3)
+        jsn = json.dumps(root, indent=2)
         st.code(jsn, language="json", line_numbers=True)
     elif sel == "XML":
         xml = formats.getXml(root)
         st.code(xml, language="xml", line_numbers=True)
-    else:
+    elif sel == "YAML":
         yaml = formats.getYaml(root)
         st.code(yaml, language="yaml", line_numbers=True)
+    elif sel == "JSON Path":
+        jsn = json.dumps(formats.getPath(root, []), indent=2)
+        st.code(jsn, language="json", line_numbers=True)
 
 with tabGraph:
     graph = graphs.getEdges(df)
@@ -73,7 +76,7 @@ with tabChart:
         fig = charts.makeIcicle(labels, parents)
     elif sel == "Sunburst":
         fig = charts.makeSunburst(labels, parents)
-    else:
+    elif sel == "Sankey":
         fig = charts.makeSankey(labels, parents)
     st.plotly_chart(fig, use_container_width=True)
 
@@ -89,7 +92,7 @@ with tabAnim:
         filename = animated.makeLinearDendrogram(df)
     elif sel == "Radial Dendrogram":
         filename = animated.makeRadialDendrogram(df)
-    else:
+    elif sel == "Network Graph":
         filename = animated.makeNetworkGraph(df)
 
     with open(filename, 'r', encoding='utf-8') as f:
