@@ -18,7 +18,7 @@ with st.sidebar:
     uploaded_file = st.file_uploader(
         "Upload a CSV file", type=["csv"], accept_multiple_files=False)
     
-    filename = "employee-manager.csv" # app/static/data/
+    filename = "test.csv" # app/static/data/
     if uploaded_file is not None:
         filename = StringIO(uploaded_file.getvalue().decode("utf-8"))
 
