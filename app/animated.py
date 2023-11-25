@@ -16,9 +16,9 @@ def _makeTree(template, df):
     root = formats.getJson(df)
 
     # create HTML file from template customized with our JSON
-    with open(f"app/static/animated/templates/{template}.html", "r") as file:
+    with open(f"animated/templates/{template}.html", "r") as file:
         content = file.read()
-    filename = f'app/static/animated/{template}.html'
+    filename = f'animated/{template}.html'
     with open(filename, "w") as file:
         file.write(content.replace('"{{data}}"', json.dumps(root, indent=4)))
     return os.path.abspath(filename)
@@ -28,11 +28,11 @@ def makeRadialDendrogram(df):
     path = formats.getPath(formats.getJson(df), [])
 
     # create HTML file from template customized with our JSON array
-    with open(f"app/static/animated/templates/radial-dendrogram.html", "r") as file:
+    with open(f"animated/templates/radial-dendrogram.html", "r") as file:
         content = file.read()
     content = content.replace('"{{data}}"', json.dumps(path, indent=2))
 
-    filename = os.path.abspath('app/static/animated/radial-dendrogram.html')
+    filename = os.path.abspath('animated/radial-dendrogram.html')
     with open(filename, "w") as file:
         file.write(content)
     return filename
@@ -60,6 +60,6 @@ def makeNetworkGraph(df):
     for node in data.nodes:
         node["value"] = len(map[node["id"]])
 
-    filename = f'app/static/animated/network-graph.html'
+    filename = f'animated/network-graph.html'
     data.show(filename)
     return os.path.abspath(filename)

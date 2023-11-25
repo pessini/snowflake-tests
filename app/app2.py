@@ -12,7 +12,7 @@ tabSource, tabFormat, tabGraph, tabChart, tabAnim = st.tabs(
     ["Source", "Format", "Graph", "Chart", "Animated"])
 
 with tabSource:
-    filename = "app/static/data/employee-manager.csv"
+    filename = "data/employee-manager.csv"
     df = pd.read_csv(filename).convert_dtypes()
     st.dataframe(df)
 
