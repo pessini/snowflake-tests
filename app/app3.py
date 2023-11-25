@@ -3,7 +3,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 from io import StringIO
-import graphs, formats, charts, animated
+import graphs, formats, charts, animated, utils
 
 st.set_page_config(layout="wide")
 st.title("Hierarchical Data Viewer")
@@ -19,7 +19,7 @@ with st.sidebar:
         "Upload a CSV file", type=["csv"], accept_multiple_files=False)
     
     path = os.path.dirname(__file__)
-    filename = f"{path}/data/employee-manager.csv"
+    filename = utils.getFullPath("data/employee-manager.csv")
     if uploaded_file is not None:
         filename = StringIO(uploaded_file.getvalue().decode("utf-8"))
 
