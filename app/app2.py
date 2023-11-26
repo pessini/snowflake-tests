@@ -6,7 +6,7 @@ import graphs, formats, charts, animated
 
 st.set_page_config(layout="wide")
 st.title("Hierarchical Data Viewer")
-st.caption("Display your hierrchical data with charts and graphs.")
+st.caption("Display your hierarchical data with charts and graphs.")
 
 tabSource, tabFormat, tabGraph, tabChart, tabAnim = st.tabs(
     ["Source", "Format", "Graph", "Chart", "Animated"])
